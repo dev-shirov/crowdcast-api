@@ -60,14 +60,7 @@ The user wants to go {activity} in {location} during the month of {month}. Based
 Should I go to {location} on that month? Explain briefly.
 """
 
-# # Connect to Gemini AI
-# client = genai.GenerativeModel("gemini-1.5-pro")
-
-# if st.button("Get Recommendation"):
-#     response = client.generate_content(prompt)
-#     st.write(response.text)
-
-client = genai.Client(api_key="AIzaSyACiPZlZtTmU_FByrTrNq1fPa8_ZiTec70")
+client = genai.Client(api_key="Input your API key here")
 if st.button("Get Recommendation"):
     response = client.models.generate_content(
         model="gemini-1.5-pro",
