@@ -60,7 +60,7 @@ The user wants to go {activity} in {location} during the month of {month}. Based
 Should I go to {location} on that month? Explain briefly.
 """
 
-client = genai.Client(api_key="Input your API key here")
+client = genai.Client(api_key="Input your key here")
 if st.button("Get Recommendation"):
     response = client.models.generate_content(
         model="gemini-1.5-pro",
