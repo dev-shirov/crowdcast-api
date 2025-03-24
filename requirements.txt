@@ -9,3 +9,5 @@ requests
 langchain  
 langchain-google-genai
 pandas
+google
+google-genai
