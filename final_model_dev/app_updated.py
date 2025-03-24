@@ -9,7 +9,7 @@ user_root = "/Users/xanvelaa/Desktop/"
 
 # Load dataset
 def load_data():
-    return pd.read_csv(user_root + "train_data_updated.csv")  
+    return pd.read_csv(user_root + "llm_dataset.csv")  
 
 df = load_data()
 
@@ -19,7 +19,7 @@ st.title("🌴 Best Travel Time Recommender")
 # User selects location, month, and activity
 location = st.selectbox("Select a location:", df["location"].unique())
 month = st.selectbox("Select a month:", df["month"].unique())
-activity = st.selectbox("Select an activity:", list(activity_preferences.keys()))
+activity = st.selectbox("Select an activity:", ["Water Sports", "Hiking", "Staycation", "Nightlife"])
 
 # Get selected month and location data
 selected_data = df[(df["location"] == location) & (df["month"] == month)].iloc[0]
