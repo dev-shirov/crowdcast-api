@@ -18,9 +18,11 @@ df["crowded"] = df.groupby("location")["tourists"].transform(lambda x: x > x.med
 
 # Define activity preferences
 activity_preferences = {
-    "surfing": {"days_sunny": 1, "days_cloudy": 0.5, "days_rained": -0.5},  # Less penalty for rain
-    "hiking": {"days_sunny": 1, "days_cloudy": 0, "days_rained": -1},  # Less restrictive on rain
-    "staycation": {"days_sunny": -0.5, "days_cloudy": 1, "days_rained": 2},  # Rainy days are now fully positive
+    "Water Sports": {"days_sunny": 1, "days_cloudy": 0.5, "days_rained": -0.5},
+    "Hiking": {"days_sunny": 1, "days_cloudy": 0.5, "days_rained": -0.3},  
+    "Staycation": {"days_sunny": -0.5, "days_cloudy": 1, "days_rained": 2},
+    "Nightlife": {"days_sunny": -0.5, "days_cloudy": 2, "days_rained": 1}
+      
 }
 
 # Compute scores dynamically for all locations
@@ -60,7 +62,7 @@ The user wants to go {activity} in {location} during the month of {month}. Based
 Should I go to {location} on that month? Explain briefly.
 """
 
-client = genai.Client(api_key="Input your key here")
+client = genai.Client(api_key="Input your API key here")
 if st.button("Get Recommendation"):
     response = client.models.generate_content(
         model="gemini-1.5-pro",
