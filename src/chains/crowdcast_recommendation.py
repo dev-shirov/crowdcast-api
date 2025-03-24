@@ -50,7 +50,7 @@ def generate_vacation_idea_chain(
                         Explain briefly.
                     """
 
-    client = genai.Client(api_key="AIzaSyBjfVn2xPzNMTgIA_l-2_3l7h6b90a1X7Q" )
+    client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
     response = client.models.generate_content(
         model="gemini-1.5-pro",
