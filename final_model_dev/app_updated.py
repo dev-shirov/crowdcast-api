@@ -71,7 +71,7 @@ Explain briefly. You can talk about the crowds and the weather.
 
 """
 
-client = genai.Client(api_key="AIzaSyCqMJlfQ8HkEGrxIwpmzVSESW-LCQT7H7I")
+client = genai.Client(api_key="put_api_key_here")
 if st.button("Get Recommendation"):
     response = client.models.generate_content(
         model="gemini-1.5-pro",
