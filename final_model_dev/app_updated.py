@@ -33,11 +33,18 @@ a person should go to {location} on a specific month.
 
 Take note of the following conditions:
 1. Here is the dataset containing weather conditions and recommendations per activity for 
-different months and locations: {df_dict} Use this dataset to make recommendations. Ignore prior knowledge. 
-2. Do not recommend crowded months. If there is a high crowd, assume that a user would not want to 
-go on that month anymore. All activities should not be recommended.
-3. If the month is too crowded, recommend another month for the user to go to in order to 
-enjoy their selected activity. 
+different months and locations: {df_dict} Use this dataset only to make recommendations. 
+Do not make any recommendations based on information outside this dataset.
+
+Take note that "True" means that a month is crowded and "False" means that a month is not crowded.
+
+2. Do not recommend crowded months. If there is a high crowd, 
+assume that a user would not want to go on that month anymore. All activities should not be recommended. 
+
+3. If the month is too crowded, recommend a month that isn't crowded for the user to go to in order to 
+enjoy their selected activity based on the user-input location. Check the dataset before recommending. 
+Do not recommend a month if it's crowded. 
+
 4. If you recommend another month for the activity, ensure that the recommendation 
 does not contradict prior recommendations.
 
@@ -47,7 +54,7 @@ The user wants to go {activity} in {location} during the month of {month}. Based
 - Days Sunny: {selected_data['days_sunny']}
 - Tourist Crowds: {"High" if selected_data['crowded'] else "Low"}
 
-Should I go to {location} on that month? 
+Should I go to {location} on that month? Do not recommend crowded months.
 
 Please follow this template with the following conditions:
 1. If your recommend the user input activity, offer additional 
@@ -71,7 +78,7 @@ Explain briefly. You can talk about the crowds and the weather.
 
 """
 
-client = genai.Client(api_key="put_api_key_here")
+client = genai.Client(api_key= "put_api_key_here")
 if st.button("Get Recommendation"):
     response = client.models.generate_content(
         model="gemini-1.5-pro",
