@@ -9,9 +9,11 @@ user_root = "/Users/xanvelaa/Desktop/"
 
 # Load dataset
 def load_data():
-    return pd.read_csv(user_root + "llm_dataset.csv")  
+    data = pd.read_csv(user_root + "llm_dataset.csv")  
+    data_json = data.to_dict(orient="records")
+    return data, data_json
 
-df = load_data()
+df, df_dict = load_data()
 
 # Streamlit UI
 st.title("🌴 Best Travel Time Recommender")
@@ -35,8 +37,7 @@ another month for the user to go to in order to enjoy their selected
 activity. 
 
 If you recommend another month for the activity, ensure that the recommendation 
-does not contradict the conditions given for that month. Do not give a range of 
-months. Be specific.
+does not contradict the conditions given for that month.
 
 The user wants to go {activity} in {location} during the month of {month}. Based on:
 - Days Rained: {selected_data['days_rained']}
@@ -67,7 +68,7 @@ Explain briefly.
 
 """
 
-client = genai.Client(api_key="AIzaSyACiPZlZtTmU_FByrTrNq1fPa8_ZiTec70")
+client = genai.Client(api_key="put_api_key_here")
 if st.button("Get Recommendation"):
     response = client.models.generate_content(
         model="gemini-1.5-pro",
