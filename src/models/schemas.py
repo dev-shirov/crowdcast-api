@@ -60,9 +60,9 @@ def query_recommendation(
 ) -> Optional[RecommendationModel]:
     input_dict = query_predictions(month, location, db)["predictions"][0].__dict__
 
-    recommended_pattern = r'Recommended:.*[A-Za-z]'
-    non_recommended_pattern = r'NotRecommended:.*[A-Za-z]'
-    recommendation_pattern = r'Recommendation:.*'
+    recommended_pattern = r'\bRecommended:.*[A-Za-z]'
+    non_recommended_pattern = r'\bNotRecommended:.*[A-Za-z]'
+    recommendation_pattern = r'\bRecommendation:.*'
 
     month = input_dict["month"]
     location = input_dict["location"]

@@ -102,4 +102,6 @@ def generate_vacation_idea_chain(
     )
     logger.info("Completed idea generation!")
 
+    logger.info(f"{response.text}")
+
     return response.text
