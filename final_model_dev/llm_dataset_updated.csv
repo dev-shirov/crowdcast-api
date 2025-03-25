@@ -1,0 +1,37 @@
+,location,month,days_rained,days_cloudy,days_sunny,tourists,crowded,WaterSports_score,Hiking_score,Staycation_score,Nightlife_score
+0,Boracay,1,17,8,6,146323,False,Recommended,Recommended,Recommended,Recommended
+1,Boracay,2,13,9,6,161727,False,Recommended,Recommended,Recommended,Recommended
+2,Boracay,3,7,14,10,192503,True,Recommended,Recommended,Recommended,Recommended
+3,Boracay,4,9,12,10,193003,True,Recommended,Recommended,Recommended,Recommended
+4,Boracay,5,11,11,9,206013,True,Recommended,Recommended,Recommended,Recommended
+5,Boracay,6,18,8,4,190545,True,Not Recommended,Not Recommended,Recommended,Recommended
+6,Boracay,7,20,8,3,167744,False,Not Recommended,Not Recommended,Recommended,Recommended
+7,Boracay,8,18,9,4,124315,False,Recommended,Recommended,Recommended,Recommended
+8,Boracay,9,19,8,3,156059,False,Not Recommended,Not Recommended,Recommended,Recommended
+9,Boracay,10,18,10,3,175847,True,Not Recommended,Not Recommended,Recommended,Recommended
+10,Boracay,11,15,11,5,173795,True,Recommended,Recommended,Recommended,Recommended
+11,Boracay,12,15,11,5,153339,False,Recommended,Recommended,Recommended,Recommended
+12,Bohol,1,21,8,2,129658,False,Not Recommended,Not Recommended,Recommended,Recommended
+13,Bohol,2,16,10,3,140046,True,Recommended,Recommended,Recommended,Recommended
+14,Bohol,3,20,8,3,115024,False,Not Recommended,Not Recommended,Recommended,Recommended
+15,Bohol,4,17,9,3,111723,False,Not Recommended,Not Recommended,Recommended,Recommended
+16,Bohol,5,15,12,4,137137,True,Recommended,Recommended,Recommended,Recommended
+17,Bohol,6,15,12,3,126981,False,Recommended,Recommended,Recommended,Recommended
+18,Bohol,7,14,14,4,144690,True,Recommended,Recommended,Recommended,Recommended
+19,Bohol,8,11,16,4,140216,True,Recommended,Recommended,Recommended,Recommended
+20,Bohol,9,12,14,4,120277,False,Recommended,Recommended,Recommended,Recommended
+21,Bohol,10,19,10,2,127919,False,Not Recommended,Not Recommended,Recommended,Recommended
+22,Bohol,11,21,7,2,133685,True,Not Recommended,Not Recommended,Recommended,Recommended
+23,Bohol,12,23,6,2,167263,True,Not Recommended,Not Recommended,Recommended,Recommended
+24,Cebu,1,17,9,5,490812,True,Recommended,Recommended,Recommended,Recommended
+25,Cebu,2,13,10,5,394330,True,Recommended,Recommended,Recommended,Recommended
+26,Cebu,3,11,11,9,335634,False,Recommended,Recommended,Recommended,Recommended
+27,Cebu,4,13,10,6,302281,False,Recommended,Recommended,Recommended,Recommended
+28,Cebu,5,14,11,6,337122,False,Recommended,Recommended,Recommended,Recommended
+29,Cebu,6,16,11,3,330585,False,Recommended,Recommended,Recommended,Recommended
+30,Cebu,7,20,9,2,378859,True,Not Recommended,Not Recommended,Recommended,Recommended
+31,Cebu,8,18,9,3,362876,True,Not Recommended,Not Recommended,Recommended,Recommended
+32,Cebu,9,19,9,2,328300,False,Not Recommended,Not Recommended,Recommended,Recommended
+33,Cebu,10,22,7,2,362762,False,Not Recommended,Not Recommended,Recommended,Recommended
+34,Cebu,11,18,9,4,403929,True,Recommended,Recommended,Recommended,Recommended
+35,Cebu,12,18,9,4,520444,True,Recommended,Recommended,Recommended,Recommended
