@@ -29,10 +29,14 @@ prompt = f"""
 You are a travel planner. Your goal is to recommend whether or not
 a person should go to {location} on a specific month. Take note that if
 it's too crowded, the user might not want to go there. However, if it's
-just rainy and not overcrowded, you can assume that a user to other
-activities from the list. If your answer is no, recommend
+just rainy and not overcrowded, you can assume that a user wants to do other
+activities from the list. If you don't recommend the first activity, recommend
 another month for the user to go to in order to enjoy their selected 
-activity.
+activity. 
+
+If you recommend another month for the activity, ensure that the recommendation 
+does not contradict the conditions given for that month. Do not give a range of 
+months. Be specific.
 
 The user wants to go {activity} in {location} during the month of {month}. Based on:
 - Days Rained: {selected_data['days_rained']}
@@ -42,19 +46,28 @@ The user wants to go {activity} in {location} during the month of {month}. Based
 
 Should I go to {location} on that month? 
 
-Please follow this template. Please offer additional/alternative activities for Activity 2 and 3. Please
-make sure that the activities recommended are from this list only: ["Water Sports", "Hiking", "Staycation", "Nightlife"]
+Please follow this template.
+If your recommend the user input activity, offer additional 
+activities for Activity 2 and 3 and do not include activities 
+that you don't recommend. If you do not recommend the user
+input activity, offer alternative activities.
+
+Please make sure that the activities recommended are from this list only: 
+["Water Sports", "Hiking", "Staycation", "Nightlife"].
+Please note that the definition of "staycation" 
+here is mostly focused on indoor activities (examples: pool, gym, spa)
+
 For the first part, no need to explain.:
-Check Mark/Wrong emoji {activity} \n
-Check Mark/Wrong emoji Activity 2 \n
-Check Mark/Wrong emoji Activity 3
+"Recommended or Not Recommended" {activity} \n
+"Recommended or Not Recommended" Activity 2 \n
+"Recommended or Not Recommended" Activity 3
 
 Recommendation: 
 Explain briefly.
 
 """
 
-client = genai.Client(api_key="place_api_key")
+client = genai.Client(api_key="AIzaSyACiPZlZtTmU_FByrTrNq1fPa8_ZiTec70")
 if st.button("Get Recommendation"):
     response = client.models.generate_content(
         model="gemini-1.5-pro",
