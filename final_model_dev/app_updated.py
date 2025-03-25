@@ -9,7 +9,7 @@ user_root = "/Users/xanvelaa/Desktop/"
 
 # Load dataset
 def load_data():
-    data = pd.read_csv(user_root + "llm_dataset.csv")  
+    data = pd.read_csv(user_root + "llm_dataset_updated.csv")  
     data_json = data.to_dict(orient="records")
     return data, data_json
 
@@ -29,15 +29,17 @@ selected_data = df[(df["location"] == location) & (df["month"] == month)].iloc[0
 # Generate prompt for LLM
 prompt = f"""
 You are a travel planner. Your goal is to recommend whether or not
-a person should go to {location} on a specific month. Take note that if
-it's too crowded, the user might not want to go there. However, if it's
-just rainy and not overcrowded, you can assume that a user wants to do other
-activities from the list. If you don't recommend the first activity, recommend
-another month for the user to go to in order to enjoy their selected 
-activity. 
+a person should go to {location} on a specific month.
 
-If you recommend another month for the activity, ensure that the recommendation 
-does not contradict the conditions given for that month.
+Take note of the following conditions:
+1. Here is the dataset containing weather conditions and recommendations per activity for 
+different months and locations: {df_dict} Use this dataset to make recommendations. Ignore prior knowledge. 
+2. Do not recommend crowded months. If there is a high crowd, assume that a user would not want to 
+go on that month anymore. All activities should not be recommended.
+3. If the month is too crowded, recommend another month for the user to go to in order to 
+enjoy their selected activity. 
+4. If you recommend another month for the activity, ensure that the recommendation 
+does not contradict prior recommendations.
 
 The user wants to go {activity} in {location} during the month of {month}. Based on:
 - Days Rained: {selected_data['days_rained']}
@@ -47,11 +49,12 @@ The user wants to go {activity} in {location} during the month of {month}. Based
 
 Should I go to {location} on that month? 
 
-Please follow this template.
-If your recommend the user input activity, offer additional 
+Please follow this template with the following conditions:
+1. If your recommend the user input activity, offer additional 
 activities for Activity 2 and 3 and do not include activities 
-that you don't recommend. If you do not recommend the user
-input activity, offer alternative activities.
+that you don't recommend. 
+2. If you do not recommend the user input activity, offer alternative activities.
+
 
 Please make sure that the activities recommended are from this list only: 
 ["Water Sports", "Hiking", "Staycation", "Nightlife"].
@@ -64,11 +67,11 @@ For the first part, no need to explain.:
 "Recommended or Not Recommended" Activity 3
 
 Recommendation: 
-Explain briefly.
+Explain briefly. You can talk about the crowds and the weather.
 
 """
 
-client = genai.Client(api_key="put_api_key_here")
+client = genai.Client(api_key="AIzaSyCqMJlfQ8HkEGrxIwpmzVSESW-LCQT7H7I")
 if st.button("Get Recommendation"):
     response = client.models.generate_content(
         model="gemini-1.5-pro",
