@@ -8,6 +8,7 @@ from .database import Base
 from .models import RecommendationModel
 
 from src.chains.crowdcast_recommendation import generate_vacation_idea_chain
+from src.core.utils import field
 
 
 class Predictions(Base):
@@ -59,12 +60,16 @@ def query_recommendation(
 ) -> Optional[RecommendationModel]:
     input_dict = query_predictions(month, location, db)["predictions"][0].__dict__
 
+    recommended_pattern = r'Recommended:.*[A-Za-z]'
+    non_recommended_pattern = r'NotRecommended:.*[A-Za-z]'
+    recommendation_pattern = r'Recommendation:.*'
+
     month = input_dict["month"]
     location = input_dict["location"]
     days_rained = input_dict["days_rained"]
     days_cloudy = input_dict["days_cloudy"]
     days_sunny = input_dict["days_sunny"]
-    crowded = "High" if input_dict["crowded"] else "Low"
+    crowded = input_dict["crowded"]
 
     predictions = query_predictions(None, None, db)
 
@@ -79,4 +84,8 @@ def query_recommendation(
         predictions,
     )
 
-    return RecommendationModel(recommendation=recommendation_str)
+    recommended_dict = field(recommended_pattern, recommendation_str, "Recommended")["Recommended"]
+    non_recommended_dict = field(non_recommended_pattern, recommendation_str, "Not Recommended")["Not Recommended"]
+    recommendation_dict = field(recommendation_pattern, recommendation_str, "Recommendation")["Recommendation"]
+
+    return RecommendationModel(Recommended=recommended_dict,NonRecommended=non_recommended_dict,Recommendation=recommendation_dict)

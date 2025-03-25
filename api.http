@@ -1,9 +1,9 @@
 POST http://127.0.0.1:8000/recommendation
 
 {
-    "month": 2,
+    "month": 6,
     "location": "Boracay", 
-    "activity": "Water Sports"
+    "activity": "Hiking"
 }
 
 ### 

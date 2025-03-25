@@ -1,10 +1,12 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import Dict, Optional
+import regex as re
 
 from src.models import models
 from src.models.database import get_db
 from src.models.schemas import query_recommendation, query_predictions
+from src.core.utils import field
 
 
 router = APIRouter()
@@ -28,6 +30,7 @@ def get_predictions(
 def get_recommendation(
     input: models.RecommendationRequest, db: Session = Depends(get_db)
 ):
+
     input_dict = input.model_dump()
     month = input_dict["month"]
     location = input_dict["location"]

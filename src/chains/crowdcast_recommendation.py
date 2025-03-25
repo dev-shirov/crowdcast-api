@@ -44,8 +44,6 @@ def generate_vacation_idea_chain(
         ]
     ].to_dict(orient="records")
 
-    logger.info(f"{dataset}")
-
     prompt = f"""
                     You are a travel planner. Your goal is to recommend whether or not
                     a person should go to {location} on a specific month.
@@ -55,7 +53,7 @@ def generate_vacation_idea_chain(
                     different months and locations: {dataset} Use this dataset only to make recommendations. 
                     Do not make any recommendations based on information outside this dataset.
 
-                    Take note that "True" means that a month is crowded and "False" means that a month is not crowded.
+                    Take note that ""High"" means that a month is crowded and ""Low"" means that a month is not crowded.
 
                     2. Do not recommend crowded months. If there is a high crowd, 
                     assume that a user would not want to go on that month anymore. All activities should not be recommended. 
@@ -88,12 +86,11 @@ def generate_vacation_idea_chain(
                     here is mostly focused on indoor activities (examples: pool, gym, spa)
 
                     For the first part, no need to explain.:
-                    "Recommended or Not Recommended" {activity} \n
-                    "Recommended or Not Recommended" Activity 2 \n
-                    "Recommended or Not Recommended" Activity 3
+                    "Recommended: or NotRecommended:" {activity} \n
+                    "Recommended: or NotRecommended:" Activity 2 \n
+                    "Recommended: or NotRecommended:" Activity 3
 
-                    Recommendation: 
-                    Explain briefly. You can talk about the crowds and the weather.
+                    Recommendation: Explain briefly. You can talk about the crowds and the weather.
 
                 """
 

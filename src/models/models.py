@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field
+from typing import Dict
 
 
 class RecommendationRequest(BaseModel):
@@ -23,4 +24,6 @@ class PredictionsModel(BaseModel):
 
 
 class RecommendationModel(BaseModel):
-    recommendation: str
+    Recommended: list[str]
+    NonRecommended: list[str]
+    Recommendation: list[str]
