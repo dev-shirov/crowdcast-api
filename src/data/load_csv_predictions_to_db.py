@@ -14,10 +14,10 @@ cur.execute(
             days_sunny integer, 
             tourists integer,
             crowded varchar,
-            water_sports_score integer,
-            hiking_score integer,
-            staycation_score integer,
-            nightlife_score integer
+            water_sports_score varchar,
+            hiking_score varchar,
+            staycation_score varchar,
+            nightlife_score varchar
             )
     """
 )

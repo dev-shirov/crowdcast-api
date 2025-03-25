@@ -16,10 +16,10 @@ class PredictionsModel(BaseModel):
     days_sunny: int
     tourists: int
     crowded: str
-    water_sports_score: int
-    hiking_score: int
-    staycation_score: int
-    nightlife_score: int
+    water_sports_score: str
+    hiking_score: str
+    staycation_score: str
+    nightlife_score: str
 
 
 class RecommendationModel(BaseModel):
