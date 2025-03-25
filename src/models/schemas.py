@@ -23,10 +23,10 @@ class Predictions(Base):
     days_sunny = Column(Integer)
     tourists = Column(Integer)
     crowded = Column(String)
-    water_sports_score = Column(Integer)
-    hiking_score = Column(Integer)
-    staycation_score = Column(Integer)
-    nightlife_score = Column(Integer)
+    water_sports_score = Column(String)
+    hiking_score = Column(String)
+    staycation_score = Column(String)
+    nightlife_score = Column(String)
 
 
 def query_predictions(
@@ -66,8 +66,17 @@ def query_recommendation(
     days_sunny = input_dict["days_sunny"]
     crowded = "High" if input_dict["crowded"] else "Low"
 
+    predictions = query_predictions(None, None, db)
+
     recommendation_str = generate_vacation_idea_chain(
-        month, location, days_rained, days_cloudy, days_sunny, crowded, activity
+        month,
+        location,
+        days_rained,
+        days_cloudy,
+        days_sunny,
+        crowded,
+        activity,
+        predictions,
     )
 
     return RecommendationModel(recommendation=recommendation_str)

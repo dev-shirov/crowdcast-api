@@ -1,7 +1,11 @@
 POST http://127.0.0.1:8000/recommendation
 
 {
-    "month": 1,
+    "month": 2,
     "location": "Boracay", 
-    "activity": "Hiking"
+    "activity": "Water Sports"
 }
+
+### 
+
+GET http://127.0.0.1:8000/predictions?location=Boracay&month=5
