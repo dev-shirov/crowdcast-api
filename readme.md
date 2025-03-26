@@ -8,3 +8,8 @@ Docker run commands:
 Running the API: 
 
 - Use the .http file to test the api 
+
+Alternative to Docker Desktop 
+
+- brew install colima 
+- colima start 
