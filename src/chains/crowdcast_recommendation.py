@@ -58,8 +58,8 @@ def generate_vacation_idea_chain(
                     2. Do not recommend crowded months. If there is a high crowd, 
                     assume that a user would not want to go on that month anymore. All activities should not be recommended. 
 
-                    3. If the month is too crowded, recommend a month that isn't crowded for the user to go to in order to 
-                    enjoy their selected activity based on the user-input location. Check the dataset before recommending. 
+                    3. If the month is too crowded, based on the user-input {location}, 
+                    recommend a month that isn't crowded for the user to go to. Check the dataset before recommending.
                     Do not recommend a month if it's crowded. 
 
                     4. If you recommend another month for the activity, ensure that the recommendation 
