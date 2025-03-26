@@ -24,6 +24,9 @@ class PredictionsModel(BaseModel):
 
 
 class RecommendationModel(BaseModel):
-    Recommended: list[str]
-    NonRecommended: list[str]
-    Recommendation: list[str]
+    month: int
+    location: str
+    crowds: str 
+    recommended: list[str]
+    nonRecommended: list[str]
+    recommendation: list[str]

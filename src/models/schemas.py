@@ -88,4 +88,4 @@ def query_recommendation(
     non_recommended_dict = field(non_recommended_pattern, recommendation_str, "Not Recommended")["Not Recommended"]
     recommendation_dict = field(recommendation_pattern, recommendation_str, "Recommendation")["Recommendation"]
 
-    return RecommendationModel(Recommended=recommended_dict,NonRecommended=non_recommended_dict,Recommendation=recommendation_dict)
+    return RecommendationModel(month=month, location=location, crowds=crowded, recommended=recommended_dict, nonRecommended=non_recommended_dict,recommendation=recommendation_dict)
