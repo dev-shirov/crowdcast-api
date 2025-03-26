@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-
+from fastapi.middleware.cors import CORSMiddleware
 
 from src.app.v1 import predictions
 from src.models.database import Base, engine
@@ -17,6 +17,17 @@ app = FastAPI(
 )  # ReDoc
 app.include_router(predictions.router)
 
+origins = [
+    "http://localhost:5173",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/ping")
 def root_ping():
